@@ -1,0 +1,45 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{362CA0B6-19AC-7446-1C8D-83A00E4556BD}") = "Hypothermia_main", "Assembly-CSharp.csproj", "{F1CDE3E1-5F8A-1AFA-F58D-5323B46AD4D1}"
+EndProject
+Project("{362CA0B6-19AC-7446-1C8D-83A00E4556BD}") = "Hypothermia_main", "Assembly-UnityScript-firstpass.unityproj", "{C9602DC6-891E-68C2-8FAD-EC64A17598FF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F1CDE3E1-5F8A-1AFA-F58D-5323B46AD4D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1CDE3E1-5F8A-1AFA-F58D-5323B46AD4D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1CDE3E1-5F8A-1AFA-F58D-5323B46AD4D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1CDE3E1-5F8A-1AFA-F58D-5323B46AD4D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9602DC6-891E-68C2-8FAD-EC64A17598FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9602DC6-891E-68C2-8FAD-EC64A17598FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9602DC6-891E-68C2-8FAD-EC64A17598FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9602DC6-891E-68C2-8FAD-EC64A17598FF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+						GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+		Policies = $0
+		$0.TextStylePolicy = $1
+		$1.inheritsSet = null
+		$1.scope = text/x-csharp
+		$0.CSharpFormattingPolicy = $2
+		$2.inheritsSet = Mono
+		$2.inheritsScope = text/x-csharp
+		$2.scope = text/x-csharp
+		$0.TextStylePolicy = $3
+		$3.FileWidth = 120
+		$3.TabWidth = 4
+		$3.EolMarker = Unix
+		$3.inheritsSet = Mono
+		$3.inheritsScope = text/plain
+		$3.scope = text/plain
+	EndGlobalSection
+
+EndGlobal
