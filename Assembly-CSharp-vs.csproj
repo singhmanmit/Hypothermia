@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Programmers\Scripts\Daniel_Holmstrom\Building_Node.cs" />
+     <Compile Include="Assets\Programmers\Scripts\Daniel_Holmstrom\Building_Placement.cs" />
      <Compile Include="Assets\Programmers\Scripts\Daniel_Holmstrom\Interior_Node.cs" />
      <Compile Include="Assets\Programmers\Scripts\Daniel_Holmstrom\Interior_Spawn.cs" />
      <Compile Include="Assets\Programmers\Scripts\Dori\GameManager.cs" />
