@@ -20,6 +20,7 @@ public class LargeMonsterAI : MonoBehaviour
 
 	public enum State {
 		Idle,
+		Roam,
 		Chase,
 		Attack
 	};
@@ -31,9 +32,10 @@ public class LargeMonsterAI : MonoBehaviour
 		// Setting the variables
 		maxNumOfLargeMonsters = 1;
 		spawnTimer = 0.0f;
+		audioDistance = 15.0f;
 
-		// Set the player as the target
-		target = GameObject.FindWithTag ("Player").transform;
+		target = null;
+		currentState = State.Roam;
 	}
 
 	void Update()
@@ -42,10 +44,23 @@ public class LargeMonsterAI : MonoBehaviour
 		RaycastHit hit;
 		if(Physics.Raycast(transform.position, Vector3.forward, out hit, sightDistance)) {
 			if(hit.transform.gameObject == GameObject.FindWithTag ("Player")) {
-
+				currentState = State.Chase;
+				target = hit.transform.gameObject.transform;
+			}
+			else {
+				currentState = State.Roam;
 			}
 		}
 
 		// "Hearing" raycasts - should be a Physics.SphereCast
+		if(Physics.SphereCast(transform.position, audioDistance, transform.forward, out hit, 10)) {
+			if(hit.transform.gameObject == GameObject.FindWithTag ("Player")) {
+				currentState = State.Chase;
+				target = hit.transform.gameObject.transform;
+			}
+		}
+
+		// Chase player when player enters key areas
+
 	}
 }
