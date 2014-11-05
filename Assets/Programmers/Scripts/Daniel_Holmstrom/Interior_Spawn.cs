@@ -24,19 +24,19 @@ public class Interior_Spawn : MonoBehaviour {
 						else{
 							GameObject.Instantiate(CabinObjects.StandingObjects[Random.Range(0,CabinObjects.StandingObjects.Count)],
 							                       Buildings[i].Nodes[j].transform.position, Buildings[i].Nodes[j].transform.rotation);
-							//Destroy(Buildings[i].Nodes[j].gameObject);
+							Destroy(Buildings[i].Nodes[j].gameObject);
 						}
 					}
 					else{
 						GameObject.Instantiate(CabinObjects.WallObjects[Random.Range(0,CabinObjects.WallObjects.Count)],
 						                       Buildings[i].Nodes[j].transform.position, Buildings[i].Nodes[j].transform.rotation);
-						//Destroy(Buildings[i].Nodes[j].gameObject);
+						Destroy(Buildings[i].Nodes[j].gameObject);
 					}
 				}
 				else{
 					GameObject.Instantiate(tentobjects.TentObjects[Random.Range(0,tentobjects.TentObjects.Count)],
 					                       Buildings[i].Nodes[j].transform.position, Buildings[i].Nodes[j].transform.rotation);
-					//Destroy(Buildings[i].Nodes[j].gameObject);
+					Destroy(Buildings[i].Nodes[j].gameObject);
 				}
 			}
 		}
