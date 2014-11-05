@@ -59,6 +59,10 @@ public class SmallMonsterSpawner : MonoBehaviour
 				canSpawn = false;
 			}
 		}
+
+		if(smallMonsters.Count < 5) {
+			canSpawn = true;
+		}
 	}
 
 	public void Remove(string _monster)
@@ -69,10 +73,26 @@ public class SmallMonsterSpawner : MonoBehaviour
 
 	public Vector3 GetNewPosition()
 	{
+		transform.Translate(player.transform.position); // Reset the spawn position to the position of the player
+
 		// Set a new random position using the player's coordinates
-		newPosition = new Vector3 (Random.Range (player.transform.position.x - 5.0f, player.transform.position.x + 3.0f),
-		                           0.0f, 
-		                           Random.Range (player.transform.position.z + 1.0f, player.transform.position.z + 5.0f));
+		newPosition = new Vector3 (Random.Range (player.transform.position.x / 2, player.transform.position.x / 2),
+		                           -2.0f, 
+		                           Random.Range (-player.transform.position.z / 2, -player.transform.position.z / 2));
 		return newPosition;
+	}
+
+	void OnTriggerStay(Collider other)
+	{
+		if (other.gameObject == GameObject.FindWithTag ("Obstacle")) {
+			canSpawn = false;
+		}
+	}
+
+	void OnTriggerExit(Collider other)
+	{
+		if (other.gameObject == GameObject.FindWithTag("Obstacle")) {
+			canSpawn = true;
+		}
 	}
 }
