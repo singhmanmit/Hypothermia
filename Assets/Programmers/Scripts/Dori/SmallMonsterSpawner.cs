@@ -11,6 +11,7 @@ public class SmallMonsterSpawner : MonoBehaviour
 {
 	private GameObject player;
 
+	public bool inBuilding;
 	public Vector3 newPosition;
 	public Transform spawner;
 	public bool canSpawn;
@@ -31,27 +32,21 @@ public class SmallMonsterSpawner : MonoBehaviour
 	{
 		// Set up variables
 		maxSmallMonsters = 5;
-		spawnTimer = 0.0f;
+		spawnTimer = 3.0f;
+		inBuilding = false;
 
-		// Grab a new position and translate the Spawner there at the start of the script
-		GetNewPosition ();
-		transform.Translate (newPosition);
+		InvokeRepeating("Spawn", spawnTimer, spawnTimer);
 	}
 
-	void Update()
+	void Spawn()
 	{
 		if(canSpawn) {
-			// Start the spawn timer
-			spawnTimer += 1.0f * Time.deltaTime;
-
 			// Spawn a new enemy every five seconds and only if the current count is below the max number allowed
-			if(spawnTimer >= 5.0f && smallMonsters.Count <= maxSmallMonsters) {
-				GameObject clone = Instantiate (monster, transform.position, transform.rotation) as GameObject;
+			if(smallMonsters.Count <= maxSmallMonsters) {
+				GetNewPosition();
+				GameObject clone = Instantiate (monster, newPosition, transform.rotation) as GameObject;
 				clone.name = "Small Monster " + smallMonsters.Count; // Rename the monster for removal later
 				smallMonsters.Add(clone); // Add the clone to the list of monsters
-				GetNewPosition();
-				transform.Translate (newPosition);
-				spawnTimer = 0; // Reset the timer
 			} 
 
 			// Set canSpawn to false if there are the max number of monsters on the field
@@ -71,28 +66,25 @@ public class SmallMonsterSpawner : MonoBehaviour
 		smallMonsters.Remove (GameObject.Find (_monster));
 	}
 
-	public Vector3 GetNewPosition()
+	Vector3 GetNewPosition()
 	{
-		transform.Translate(player.transform.position); // Reset the spawn position to the position of the player
-
-		// Set a new random position using the player's coordinates
-		newPosition = new Vector3 (Random.Range (player.transform.position.x / 2, player.transform.position.x / 2),
-		                           -2.0f, 
-		                           Random.Range (-player.transform.position.z / 2, -player.transform.position.z / 2));
+		newPosition = new Vector3 (player.transform.localPosition.x + Random.Range (-50.0f, 50.0f), 0.0f, player.transform.localPosition.z + Random.Range (-50.0f, 50.0f));
 		return newPosition;
 	}
 
 	void OnTriggerStay(Collider other)
 	{
-		if (other.gameObject == GameObject.FindWithTag ("Obstacle")) {
+		if (other.gameObject == GameObject.FindWithTag ("Hut")) {
 			canSpawn = false;
+			inBuilding = true;
 		}
 	}
 
 	void OnTriggerExit(Collider other)
 	{
-		if (other.gameObject == GameObject.FindWithTag("Obstacle")) {
+		if (other.gameObject == GameObject.FindWithTag("Hut")) {
 			canSpawn = true;
+			inBuilding = false;
 		}
 	}
 }
