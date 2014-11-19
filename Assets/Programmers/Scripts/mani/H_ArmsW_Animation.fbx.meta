@@ -1,0 +1,156 @@
+fileFormatVersion: 2
+guid: 07ebd7cb450adab4298d6eccbb72c1f0
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: Arms
+    100002: Arms_Root
+    100004: camera1_aim
+    100006: camera1_group
+    100008: //RootNode
+    100010: L_Elbow
+    100012: L_Fingers0
+    100014: L_Fingers01
+    100016: L_Fingers02
+    100018: L_Fingers03
+    100020: L_Fingers04
+    100022: L_Hand
+    100024: L_Pole
+    100026: L_Shoulder
+    100028: L_Shoulder 1
+    100030: L_Thumb0
+    100032: L_Thumb01
+    100034: L_Thumb02
+    100036: L_Thumb03
+    100038: L_Thumb04
+    100040: L_Wrist
+    100042: L_Wrist 1
+    100044: locked_Null
+    100046: MasterMover
+    100048: R_Elbow
+    100050: R_Fingers0
+    100052: R_Fingers01
+    100054: R_Fingers02
+    100056: R_Fingers03
+    100058: R_Fingers04
+    100060: R_Hand
+    100062: R_Pole
+    100064: R_Shoulder
+    100066: R_Shoulder 1
+    100068: R_Thumb0
+    100070: R_Thumb01
+    100072: R_Thumb02
+    100074: R_Thumb03
+    100076: R_Thumb04
+    100078: R_Wrist
+    100080: R_Wrist 1
+    100082: WatchBase
+    100084: WatchCap
+    400000: Arms
+    400002: Arms_Root
+    400004: camera1_aim
+    400006: camera1_group
+    400008: //RootNode
+    400010: L_Elbow
+    400012: L_Fingers0
+    400014: L_Fingers01
+    400016: L_Fingers02
+    400018: L_Fingers03
+    400020: L_Fingers04
+    400022: L_Hand
+    400024: L_Pole
+    400026: L_Shoulder
+    400028: L_Shoulder 1
+    400030: L_Thumb0
+    400032: L_Thumb01
+    400034: L_Thumb02
+    400036: L_Thumb03
+    400038: L_Thumb04
+    400040: L_Wrist
+    400042: L_Wrist 1
+    400044: locked_Null
+    400046: MasterMover
+    400048: R_Elbow
+    400050: R_Fingers0
+    400052: R_Fingers01
+    400054: R_Fingers02
+    400056: R_Fingers03
+    400058: R_Fingers04
+    400060: R_Hand
+    400062: R_Pole
+    400064: R_Shoulder
+    400066: R_Shoulder 1
+    400068: R_Thumb0
+    400070: R_Thumb01
+    400072: R_Thumb02
+    400074: R_Thumb03
+    400076: R_Thumb04
+    400078: R_Wrist
+    400080: R_Wrist 1
+    400082: WatchBase
+    400084: WatchCap
+    2300000: WatchBase
+    2300002: WatchCap
+    3300000: WatchBase
+    3300002: WatchCap
+    4300000: WatchBase
+    4300002: WatchCap
+    4300004: Arms
+    7400000: Arm Movements
+    9500000: //RootNode
+    11100000: //RootNode
+    13700000: Arms
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  additionalBone: 0
+  userData: 

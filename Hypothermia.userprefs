@@ -1,17 +1,10 @@
 ﻿<Properties>
-<<<<<<< HEAD
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Programmers\Scripts\Dori\SmallMonsterAI.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Programmers\Scripts\mani\animations_script.cs">
     <Files>
-      <File FileName="Assets\Programmers\Scripts\Dori\LargeMonsterAI.cs" Line="25" Column="9" />
-      <File FileName="Assets\Programmers\Scripts\Dori\SmallMonsterSpawner.cs" Line="1" Column="1" />
-      <File FileName="Assets\Programmers\Scripts\Dori\SmallMonsterAI.cs" Line="100" Column="1" />
-=======
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Programmers/Scripts/Victor/TravelPoints.cs">
-    <Files>
-      <File FileName="Assets/Programmers/Scripts/Victor/TravelPoints.cs" Line="32" Column="49" />
->>>>>>> origin/victor
+      <File FileName="Assets\Programmers\Scripts\mani\animations_script.cs" Line="21" Column="34" />
+      <File FileName="Assets\Programmers\Scripts\mani\flamethrower.cs" Line="31" Column="4" />
+      <File FileName="Assets\Programmers\Scripts\mani\igniter_flame.cs" Line="26" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

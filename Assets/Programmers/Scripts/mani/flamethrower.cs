@@ -2,27 +2,45 @@
 using System.Collections;
 
 public class flamethrower : MonoBehaviour {
+	
+	protected bool bothclicked;
+	protected bool letPlay;
 
 	// Use this for initialization
 	void Start () {
 		letPlay = false;
+		bothclicked = false;
 	}
-	
-
-	protected bool letPlay;
 	
 	public void Update()
 	{
-		if(Input.GetMouseButtonDown(0))
+		if(Input.GetMouseButton(1))
 		{
-			letPlay = !letPlay;
+			bothclicked = true;
 		}
 
-		if(Input.GetMouseButtonDown(1))
+		if(Input.GetMouseButtonDown(0))
+		{
+			if(bothclicked)
+			{
+				letPlay = true;
+			}
+		}
+
+		if (Input.GetMouseButton(0) &&Input.GetMouseButton(1)) 
+		{
+			letPlay = true;
+		}
+
+		if(Input.GetMouseButtonUp(1))
+		{
+			bothclicked = false;
+		}
+
+		if(Input.GetMouseButtonUp(0))
 		{
 			letPlay = false;
 		}
-		
 		if(letPlay)
 		{
 			if(!gameObject.particleSystem.isPlaying)
@@ -32,7 +50,7 @@ public class flamethrower : MonoBehaviour {
 		}else{
 			if(gameObject.particleSystem.isPlaying)
 			{
-				gameObject.particleSystem.Clear();
+				gameObject.particleSystem.Stop();
 			}
 		}
 	}

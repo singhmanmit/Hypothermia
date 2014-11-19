@@ -1,0 +1,822 @@
+fileFormatVersion: 2
+guid: 26a09103f9c3e4b4fa3a5e2938257ddf
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: Arms
+    100002: Arms_Root
+    100004: break_line
+    100006: camera1_aim
+    100008: camera1_group
+    100010: FlameThrowerUpdated
+    100012: FTBody
+    100014: gas_trigger
+    100016: GasTank_Fake
+    100018: GasTank_Real
+    100020: //RootNode
+    100022: L_Elbow
+    100024: L_Fingers0
+    100026: L_Fingers01
+    100028: L_Fingers02
+    100030: L_Fingers03
+    100032: L_Fingers04
+    100034: L_Hand
+    100036: L_Pole
+    100038: L_Shoulder
+    100040: L_Shoulder 1
+    100042: L_Thumb0
+    100044: L_Thumb01
+    100046: L_Thumb02
+    100048: L_Thumb03
+    100050: L_Thumb04
+    100052: L_Wrist
+    100054: L_Wrist 1
+    100056: locked_Null
+    100058: MasterMover
+    100060: PrimaryTrigger
+    100062: R_Elbow
+    100064: R_Fingers0
+    100066: R_Fingers01
+    100068: R_Fingers02
+    100070: R_Fingers03
+    100072: R_Fingers04
+    100074: R_Hand
+    100076: R_Pole
+    100078: R_Shoulder
+    100080: R_Shoulder 1
+    100082: R_Thumb0
+    100084: R_Thumb01
+    100086: R_Thumb02
+    100088: R_Thumb03
+    100090: R_Thumb04
+    100092: R_Wrist
+    100094: R_Wrist 1
+    100096: WatchBase
+    100098: WatchCap
+    400000: Arms
+    400002: Arms_Root
+    400004: break_line
+    400006: camera1_aim
+    400008: camera1_group
+    400010: FlameThrowerUpdated
+    400012: FTBody
+    400014: gas_trigger
+    400016: GasTank_Fake
+    400018: GasTank_Real
+    400020: //RootNode
+    400022: L_Elbow
+    400024: L_Fingers0
+    400026: L_Fingers01
+    400028: L_Fingers02
+    400030: L_Fingers03
+    400032: L_Fingers04
+    400034: L_Hand
+    400036: L_Pole
+    400038: L_Shoulder
+    400040: L_Shoulder 1
+    400042: L_Thumb0
+    400044: L_Thumb01
+    400046: L_Thumb02
+    400048: L_Thumb03
+    400050: L_Thumb04
+    400052: L_Wrist
+    400054: L_Wrist 1
+    400056: locked_Null
+    400058: MasterMover
+    400060: PrimaryTrigger
+    400062: R_Elbow
+    400064: R_Fingers0
+    400066: R_Fingers01
+    400068: R_Fingers02
+    400070: R_Fingers03
+    400072: R_Fingers04
+    400074: R_Hand
+    400076: R_Pole
+    400078: R_Shoulder
+    400080: R_Shoulder 1
+    400082: R_Thumb0
+    400084: R_Thumb01
+    400086: R_Thumb02
+    400088: R_Thumb03
+    400090: R_Thumb04
+    400092: R_Wrist
+    400094: R_Wrist 1
+    400096: WatchBase
+    400098: WatchCap
+    2300000: break_line
+    2300002: FTBody
+    2300004: gas_trigger
+    2300006: GasTank_Fake
+    2300008: GasTank_Real
+    2300010: PrimaryTrigger
+    2300012: WatchBase
+    2300014: WatchCap
+    3300000: break_line
+    3300002: FTBody
+    3300004: gas_trigger
+    3300006: GasTank_Fake
+    3300008: GasTank_Real
+    3300010: PrimaryTrigger
+    3300012: WatchBase
+    3300014: WatchCap
+    4300000: WatchBase
+    4300002: WatchCap
+    4300004: PrimaryTrigger
+    4300006: gas_trigger
+    4300008: break_line
+    4300010: GasTank_Real
+    4300012: FTBody
+    4300014: GasTank_Fake
+    4300016: Arms
+    7400000: raise
+    7400002: walk_idle
+    7400004: reload
+    7400006: igniter
+    7400008: fire
+    9500000: //RootNode
+    11100000: //RootNode
+    13700000: Arms
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: raise
+      takeName: Arm MovementsFT03
+      firstFrame: 0
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Arms
+        weight: 1
+      - path: Arms_Root
+        weight: 1
+      - path: Arms_Root/L_Shoulder
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand/L_Fingers0
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand/L_Fingers0/L_Fingers01
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand/L_Fingers0/L_Fingers01/L_Fingers02
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand/L_Fingers0/L_Fingers01/L_Fingers02/L_Fingers03
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand/L_Fingers0/L_Fingers01/L_Fingers02/L_Fingers03/L_Fingers04
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand/L_Thumb0
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand/L_Thumb0/L_Thumb01
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand/L_Thumb0/L_Thumb01/L_Thumb02
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand/L_Thumb0/L_Thumb01/L_Thumb02/L_Thumb03
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand/L_Thumb0/L_Thumb01/L_Thumb02/L_Thumb03/L_Thumb04
+        weight: 1
+      - path: Arms_Root/R_Shoulder
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand/R_Fingers0
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand/R_Fingers0/R_Fingers01
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand/R_Fingers0/R_Fingers01/R_Fingers02
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand/R_Fingers0/R_Fingers01/R_Fingers02/R_Fingers03
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand/R_Fingers0/R_Fingers01/R_Fingers02/R_Fingers03/R_Fingers04
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand/R_Thumb0
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand/R_Thumb0/R_Thumb01
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand/R_Thumb0/R_Thumb01/R_Thumb02
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand/R_Thumb0/R_Thumb01/R_Thumb02/R_Thumb03
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand/R_Thumb0/R_Thumb01/R_Thumb02/R_Thumb03/R_Thumb04
+        weight: 1
+      - path: camera1_group
+        weight: 1
+      - path: camera1_group/camera1_aim
+        weight: 1
+      - path: MasterMover
+        weight: 1
+      - path: MasterMover/locked_Null
+        weight: 1
+      - path: MasterMover/locked_Null/L_Pole
+        weight: 1
+      - path: MasterMover/locked_Null/L_Shoulder 1
+        weight: 1
+      - path: MasterMover/locked_Null/L_Wrist
+        weight: 1
+      - path: MasterMover/locked_Null/L_Wrist/GasTank_Fake
+        weight: 1
+      - path: MasterMover/locked_Null/R_Pole
+        weight: 1
+      - path: MasterMover/locked_Null/R_Shoulder 1
+        weight: 1
+      - path: MasterMover/locked_Null/R_Wrist
+        weight: 1
+      - path: MasterMover/locked_Null/R_Wrist/FlameThrowerUpdated
+        weight: 1
+      - path: MasterMover/locked_Null/R_Wrist/FlameThrowerUpdated/break_line
+        weight: 1
+      - path: MasterMover/locked_Null/R_Wrist/FlameThrowerUpdated/FTBody
+        weight: 1
+      - path: MasterMover/locked_Null/R_Wrist/FlameThrowerUpdated/gas_trigger
+        weight: 1
+      - path: MasterMover/locked_Null/R_Wrist/FlameThrowerUpdated/GasTank_Real
+        weight: 1
+      - path: MasterMover/locked_Null/R_Wrist/FlameThrowerUpdated/PrimaryTrigger
+        weight: 1
+      - path: WatchBase
+        weight: 1
+      - path: WatchBase/WatchCap
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: walk_idle
+      takeName: Arm MovementsFT03
+      firstFrame: 60
+      lastFrame: 120
+      wrapMode: 8
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Arms
+        weight: 1
+      - path: Arms_Root
+        weight: 1
+      - path: Arms_Root/L_Shoulder
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand/L_Fingers0
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand/L_Fingers0/L_Fingers01
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand/L_Fingers0/L_Fingers01/L_Fingers02
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand/L_Fingers0/L_Fingers01/L_Fingers02/L_Fingers03
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand/L_Fingers0/L_Fingers01/L_Fingers02/L_Fingers03/L_Fingers04
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand/L_Thumb0
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand/L_Thumb0/L_Thumb01
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand/L_Thumb0/L_Thumb01/L_Thumb02
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand/L_Thumb0/L_Thumb01/L_Thumb02/L_Thumb03
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand/L_Thumb0/L_Thumb01/L_Thumb02/L_Thumb03/L_Thumb04
+        weight: 1
+      - path: Arms_Root/R_Shoulder
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand/R_Fingers0
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand/R_Fingers0/R_Fingers01
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand/R_Fingers0/R_Fingers01/R_Fingers02
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand/R_Fingers0/R_Fingers01/R_Fingers02/R_Fingers03
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand/R_Fingers0/R_Fingers01/R_Fingers02/R_Fingers03/R_Fingers04
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand/R_Thumb0
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand/R_Thumb0/R_Thumb01
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand/R_Thumb0/R_Thumb01/R_Thumb02
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand/R_Thumb0/R_Thumb01/R_Thumb02/R_Thumb03
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand/R_Thumb0/R_Thumb01/R_Thumb02/R_Thumb03/R_Thumb04
+        weight: 1
+      - path: camera1_group
+        weight: 1
+      - path: camera1_group/camera1_aim
+        weight: 1
+      - path: MasterMover
+        weight: 1
+      - path: MasterMover/locked_Null
+        weight: 1
+      - path: MasterMover/locked_Null/L_Pole
+        weight: 1
+      - path: MasterMover/locked_Null/L_Shoulder 1
+        weight: 1
+      - path: MasterMover/locked_Null/L_Wrist
+        weight: 1
+      - path: MasterMover/locked_Null/L_Wrist/GasTank_Fake
+        weight: 1
+      - path: MasterMover/locked_Null/R_Pole
+        weight: 1
+      - path: MasterMover/locked_Null/R_Shoulder 1
+        weight: 1
+      - path: MasterMover/locked_Null/R_Wrist
+        weight: 1
+      - path: MasterMover/locked_Null/R_Wrist/FlameThrowerUpdated
+        weight: 1
+      - path: MasterMover/locked_Null/R_Wrist/FlameThrowerUpdated/break_line
+        weight: 1
+      - path: MasterMover/locked_Null/R_Wrist/FlameThrowerUpdated/FTBody
+        weight: 1
+      - path: MasterMover/locked_Null/R_Wrist/FlameThrowerUpdated/gas_trigger
+        weight: 1
+      - path: MasterMover/locked_Null/R_Wrist/FlameThrowerUpdated/GasTank_Real
+        weight: 1
+      - path: MasterMover/locked_Null/R_Wrist/FlameThrowerUpdated/PrimaryTrigger
+        weight: 1
+      - path: WatchBase
+        weight: 1
+      - path: WatchBase/WatchCap
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: reload
+      takeName: Arm MovementsFT03
+      firstFrame: 120
+      lastFrame: 260
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Arms
+        weight: 1
+      - path: Arms_Root
+        weight: 1
+      - path: Arms_Root/L_Shoulder
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand/L_Fingers0
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand/L_Fingers0/L_Fingers01
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand/L_Fingers0/L_Fingers01/L_Fingers02
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand/L_Fingers0/L_Fingers01/L_Fingers02/L_Fingers03
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand/L_Fingers0/L_Fingers01/L_Fingers02/L_Fingers03/L_Fingers04
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand/L_Thumb0
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand/L_Thumb0/L_Thumb01
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand/L_Thumb0/L_Thumb01/L_Thumb02
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand/L_Thumb0/L_Thumb01/L_Thumb02/L_Thumb03
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand/L_Thumb0/L_Thumb01/L_Thumb02/L_Thumb03/L_Thumb04
+        weight: 1
+      - path: Arms_Root/R_Shoulder
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand/R_Fingers0
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand/R_Fingers0/R_Fingers01
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand/R_Fingers0/R_Fingers01/R_Fingers02
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand/R_Fingers0/R_Fingers01/R_Fingers02/R_Fingers03
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand/R_Fingers0/R_Fingers01/R_Fingers02/R_Fingers03/R_Fingers04
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand/R_Thumb0
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand/R_Thumb0/R_Thumb01
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand/R_Thumb0/R_Thumb01/R_Thumb02
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand/R_Thumb0/R_Thumb01/R_Thumb02/R_Thumb03
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand/R_Thumb0/R_Thumb01/R_Thumb02/R_Thumb03/R_Thumb04
+        weight: 1
+      - path: camera1_group
+        weight: 1
+      - path: camera1_group/camera1_aim
+        weight: 1
+      - path: MasterMover
+        weight: 1
+      - path: MasterMover/locked_Null
+        weight: 1
+      - path: MasterMover/locked_Null/L_Pole
+        weight: 1
+      - path: MasterMover/locked_Null/L_Shoulder 1
+        weight: 1
+      - path: MasterMover/locked_Null/L_Wrist
+        weight: 1
+      - path: MasterMover/locked_Null/L_Wrist/GasTank_Fake
+        weight: 1
+      - path: MasterMover/locked_Null/R_Pole
+        weight: 1
+      - path: MasterMover/locked_Null/R_Shoulder 1
+        weight: 1
+      - path: MasterMover/locked_Null/R_Wrist
+        weight: 1
+      - path: MasterMover/locked_Null/R_Wrist/FlameThrowerUpdated
+        weight: 1
+      - path: MasterMover/locked_Null/R_Wrist/FlameThrowerUpdated/break_line
+        weight: 1
+      - path: MasterMover/locked_Null/R_Wrist/FlameThrowerUpdated/FTBody
+        weight: 1
+      - path: MasterMover/locked_Null/R_Wrist/FlameThrowerUpdated/gas_trigger
+        weight: 1
+      - path: MasterMover/locked_Null/R_Wrist/FlameThrowerUpdated/GasTank_Real
+        weight: 1
+      - path: MasterMover/locked_Null/R_Wrist/FlameThrowerUpdated/PrimaryTrigger
+        weight: 1
+      - path: WatchBase
+        weight: 1
+      - path: WatchBase/WatchCap
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: igniter
+      takeName: Arm MovementsFT03
+      firstFrame: 260
+      lastFrame: 274
+      wrapMode: 1
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Arms
+        weight: 1
+      - path: Arms_Root
+        weight: 1
+      - path: Arms_Root/L_Shoulder
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand/L_Fingers0
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand/L_Fingers0/L_Fingers01
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand/L_Fingers0/L_Fingers01/L_Fingers02
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand/L_Fingers0/L_Fingers01/L_Fingers02/L_Fingers03
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand/L_Fingers0/L_Fingers01/L_Fingers02/L_Fingers03/L_Fingers04
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand/L_Thumb0
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand/L_Thumb0/L_Thumb01
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand/L_Thumb0/L_Thumb01/L_Thumb02
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand/L_Thumb0/L_Thumb01/L_Thumb02/L_Thumb03
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand/L_Thumb0/L_Thumb01/L_Thumb02/L_Thumb03/L_Thumb04
+        weight: 1
+      - path: Arms_Root/R_Shoulder
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand/R_Fingers0
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand/R_Fingers0/R_Fingers01
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand/R_Fingers0/R_Fingers01/R_Fingers02
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand/R_Fingers0/R_Fingers01/R_Fingers02/R_Fingers03
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand/R_Fingers0/R_Fingers01/R_Fingers02/R_Fingers03/R_Fingers04
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand/R_Thumb0
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand/R_Thumb0/R_Thumb01
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand/R_Thumb0/R_Thumb01/R_Thumb02
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand/R_Thumb0/R_Thumb01/R_Thumb02/R_Thumb03
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand/R_Thumb0/R_Thumb01/R_Thumb02/R_Thumb03/R_Thumb04
+        weight: 1
+      - path: camera1_group
+        weight: 1
+      - path: camera1_group/camera1_aim
+        weight: 1
+      - path: MasterMover
+        weight: 1
+      - path: MasterMover/locked_Null
+        weight: 1
+      - path: MasterMover/locked_Null/L_Pole
+        weight: 1
+      - path: MasterMover/locked_Null/L_Shoulder 1
+        weight: 1
+      - path: MasterMover/locked_Null/L_Wrist
+        weight: 1
+      - path: MasterMover/locked_Null/L_Wrist/GasTank_Fake
+        weight: 1
+      - path: MasterMover/locked_Null/R_Pole
+        weight: 1
+      - path: MasterMover/locked_Null/R_Shoulder 1
+        weight: 1
+      - path: MasterMover/locked_Null/R_Wrist
+        weight: 1
+      - path: MasterMover/locked_Null/R_Wrist/FlameThrowerUpdated
+        weight: 1
+      - path: MasterMover/locked_Null/R_Wrist/FlameThrowerUpdated/break_line
+        weight: 1
+      - path: MasterMover/locked_Null/R_Wrist/FlameThrowerUpdated/FTBody
+        weight: 1
+      - path: MasterMover/locked_Null/R_Wrist/FlameThrowerUpdated/gas_trigger
+        weight: 1
+      - path: MasterMover/locked_Null/R_Wrist/FlameThrowerUpdated/GasTank_Real
+        weight: 1
+      - path: MasterMover/locked_Null/R_Wrist/FlameThrowerUpdated/PrimaryTrigger
+        weight: 1
+      - path: WatchBase
+        weight: 1
+      - path: WatchBase/WatchCap
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: fire
+      takeName: Arm MovementsFT03
+      firstFrame: 275
+      lastFrame: 289
+      wrapMode: 8
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Arms
+        weight: 1
+      - path: Arms_Root
+        weight: 1
+      - path: Arms_Root/L_Shoulder
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand/L_Fingers0
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand/L_Fingers0/L_Fingers01
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand/L_Fingers0/L_Fingers01/L_Fingers02
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand/L_Fingers0/L_Fingers01/L_Fingers02/L_Fingers03
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand/L_Fingers0/L_Fingers01/L_Fingers02/L_Fingers03/L_Fingers04
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand/L_Thumb0
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand/L_Thumb0/L_Thumb01
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand/L_Thumb0/L_Thumb01/L_Thumb02
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand/L_Thumb0/L_Thumb01/L_Thumb02/L_Thumb03
+        weight: 1
+      - path: Arms_Root/L_Shoulder/L_Elbow/L_Wrist 1/L_Hand/L_Thumb0/L_Thumb01/L_Thumb02/L_Thumb03/L_Thumb04
+        weight: 1
+      - path: Arms_Root/R_Shoulder
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand/R_Fingers0
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand/R_Fingers0/R_Fingers01
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand/R_Fingers0/R_Fingers01/R_Fingers02
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand/R_Fingers0/R_Fingers01/R_Fingers02/R_Fingers03
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand/R_Fingers0/R_Fingers01/R_Fingers02/R_Fingers03/R_Fingers04
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand/R_Thumb0
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand/R_Thumb0/R_Thumb01
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand/R_Thumb0/R_Thumb01/R_Thumb02
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand/R_Thumb0/R_Thumb01/R_Thumb02/R_Thumb03
+        weight: 1
+      - path: Arms_Root/R_Shoulder/R_Elbow/R_Wrist 1/R_Hand/R_Thumb0/R_Thumb01/R_Thumb02/R_Thumb03/R_Thumb04
+        weight: 1
+      - path: camera1_group
+        weight: 1
+      - path: camera1_group/camera1_aim
+        weight: 1
+      - path: MasterMover
+        weight: 1
+      - path: MasterMover/locked_Null
+        weight: 1
+      - path: MasterMover/locked_Null/L_Pole
+        weight: 1
+      - path: MasterMover/locked_Null/L_Shoulder 1
+        weight: 1
+      - path: MasterMover/locked_Null/L_Wrist
+        weight: 1
+      - path: MasterMover/locked_Null/L_Wrist/GasTank_Fake
+        weight: 1
+      - path: MasterMover/locked_Null/R_Pole
+        weight: 1
+      - path: MasterMover/locked_Null/R_Shoulder 1
+        weight: 1
+      - path: MasterMover/locked_Null/R_Wrist
+        weight: 1
+      - path: MasterMover/locked_Null/R_Wrist/FlameThrowerUpdated
+        weight: 1
+      - path: MasterMover/locked_Null/R_Wrist/FlameThrowerUpdated/break_line
+        weight: 1
+      - path: MasterMover/locked_Null/R_Wrist/FlameThrowerUpdated/FTBody
+        weight: 1
+      - path: MasterMover/locked_Null/R_Wrist/FlameThrowerUpdated/gas_trigger
+        weight: 1
+      - path: MasterMover/locked_Null/R_Wrist/FlameThrowerUpdated/GasTank_Real
+        weight: 1
+      - path: MasterMover/locked_Null/R_Wrist/FlameThrowerUpdated/PrimaryTrigger
+        weight: 1
+      - path: WatchBase
+        weight: 1
+      - path: WatchBase/WatchCap
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  additionalBone: 0
+  userData: 
