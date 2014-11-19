@@ -11,6 +11,7 @@ public class TravelPoints : MonoBehaviour {
 	public Camera mainCam;
 	public Camera mapCam;
 
+	public Texture2D wayPoint;
 
 	bool isMapCameraON;
 
@@ -75,7 +76,9 @@ public class TravelPoints : MonoBehaviour {
 
 				if(Physics.Raycast(ray))
 				{
+
 					Debug.Log("you have clicked on a new coordiante " + Input.mousePosition);
+					GUI.DrawTexture(new Rect(transform.position),wayPoint);
 				}
 			}
 		
