@@ -22,8 +22,8 @@ public class TravelPoints : MonoBehaviour {
 		ground = GameObject.FindGameObjectWithTag ("Ground").transform;
 
 		// the variables will find the camera components for the main and Map camera
-		mapCam = GameObject.FindGameObjectWithTag ("MapCameraScreen").camera;
-		mainCam = GameObject.FindGameObjectWithTag ("MainCamera").camera;
+		mapCam = GameObject.FindGameObjectWithTag ("MainCamera").camera;
+		mainCam = GameObject.FindGameObjectWithTag ("PlayerCamera").camera;
 
 		mainCam.enabled = true;
 		mapCam.enabled = false;
@@ -52,20 +52,31 @@ public class TravelPoints : MonoBehaviour {
 
 		
 		if(isMapCameraON){
-			if(Input.GetMouseButtonDown(0))
+//			if(Input.GetMouseButtonDown(0))
+//			{
+//				Debug.Log("Map Camera is On");
+//				RaycastHit hit;
+//				if (Physics.Raycast(transform.position,	Vector3.forward, out hit ))
+//				{
+//					float distance = hit.distance;
+//
+//					if(GameObject.FindGameObjectWithTag("Ground") == this.ground)
+//					{
+//						print("you have clicked your destination ------------>");
+//					}
+//				}
+//
+//			}
+
+
+			if (Input.GetButtonDown("Fire1"))
 			{
-				Debug.Log("Map Camera is On");
-				RaycastHit hit;
-				if (Physics.Raycast(transform.position,	Vector3.forward, out hit ))
+				Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+				if(Physics.Raycast(ray))
 				{
-					float distance = hit.distance;
-
-					if(GameObject.FindGameObjectWithTag("Ground") == this.ground)
-					{
-						print("you have clicked your destination ------------>");
-					}
+					Debug.Log("you have clicked on a new coordiante " + Input.mousePosition);
 				}
-
 			}
 		
 		}
