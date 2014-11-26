@@ -1,0 +1,13 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Programmers\Scripts\Dori\SmallMonsterAI.cs">
+    <Files>
+      <File FileName="Assets\Programmers\Scripts\Dori\SmallMonsterSpawner.cs" Line="72" Column="62" />
+      <File FileName="Assets\Programmers\Scripts\Dori\SmallMonsterAI.cs" Line="121" Column="13" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
