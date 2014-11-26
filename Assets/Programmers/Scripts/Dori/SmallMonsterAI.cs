@@ -34,6 +34,8 @@ public class SmallMonsterAI : MonoBehaviour
 	public Transform target;
 	public Vector3 waypoint;
 
+	public RaycastHit ground;
+
 	private State currentState;
 	private float chaseDistance;
 	private float attackDistance;
@@ -76,8 +78,8 @@ public class SmallMonsterAI : MonoBehaviour
 		radius = 5.0f;
 		chaseDistance = 50.0f;
 		attackDistance = 12.0f;
-		destroyDistance = 60.0f;
-		popDownDistance = 20.0f;
+		destroyDistance = 80.0f;
+		popDownDistance = 13.0f;
 
 		deadTimer = 0.0f;
 		waypointTimer = 0.0f;
@@ -92,9 +94,6 @@ public class SmallMonsterAI : MonoBehaviour
 
 	void Update()
 	{
-		maxPop = player.transform.position.y + 0.2f;
-		minPop = player.transform.position.y;
-
 		// Popping out of the ground 
 		if(isJump && canJump && !isDead && !spawner.inBuilding) {
 			// Set rigidbody.isKinematic to false, so that gravity can be used. Previously turned false to keep below surface.
@@ -118,6 +117,13 @@ public class SmallMonsterAI : MonoBehaviour
 
 		// If the monster is not dead, and the player is inside of a house
 		if(currentState == State.Roam && !isDead) {
+			if(Physics.Raycast(transform.position, Vector3.up, out ground, 2.0f)) {
+				if(ground.transform.tag == "Ground") {
+					minPop = ground.transform.position.y - 2.0f;
+					maxPop = ground.transform.position.y + 0.3f;
+				}
+			}
+
 			speed = 3.0f;
 			target = GameObject.FindGameObjectWithTag("Player").transform;
 
@@ -156,7 +162,7 @@ public class SmallMonsterAI : MonoBehaviour
 	
 		// Chase State (if the player are within range)
 		if(currentState == State.Chase && !isDead) {
-			speed = 6.0f;
+			speed = 4.5f;
 			target = GameObject.FindGameObjectWithTag ("Player").transform;
 
 			// Get the direction to travel in by subtracting the target's position with the monster's position. Set y to a negative value

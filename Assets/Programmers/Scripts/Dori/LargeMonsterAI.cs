@@ -1,66 +1,92 @@
-﻿/* This script is responsible for controlling the large monster.
- * Will utilize raycasts to detect the player through "sight" and "sound".
- * Will also continually hunt the player throughout the map.
-*/
-
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 public class LargeMonsterAI : MonoBehaviour 
 {
-	// Declaring variables and set in Start() to allow for flexibility 
-	public int maxNumOfLargeMonsters;
-	public float spawnTimer;
-	public float audioDistance;
-	public float sightDistance;
 	public State currentState;
+	public float huntDistance;
+	public float chaseDistance;
+	public float attackDistance;
+	public float speed;
+	public float posTimer;
+	public Vector3 lastKnownPos;
+	public Transform target;
+	public bool getPos;
 
-	public bool inSight;
-	public bool inAudio;
+	private GameObject player;
+	private SphereCollider sphereCollider;
 
 	public enum State {
-		Idle,
-		Roam,
-		Chase,
-		Attack
+		Hunt,
+		Chase
 	};
 
-	public Transform target;
+	void Awake()
+	{
+		sphereCollider = this.gameObject.GetComponent<SphereCollider>();
+	}
 
 	void Start()
 	{
-		// Setting the variables
-		maxNumOfLargeMonsters = 1;
-		spawnTimer = 0.0f;
-		audioDistance = 15.0f;
+		huntDistance = 50.0f;
+		chaseDistance = 30.0f;
+		attackDistance = 5.0f;
+		speed = 3.0f;
+		posTimer = 0.0f;
+		getPos = false;
 
-		target = null;
-		currentState = State.Roam;
+		currentState = State.Hunt;
+
+		player = GameObject.FindGameObjectWithTag("Player");
+		sphereCollider.radius = chaseDistance;
 	}
 
 	void Update()
 	{
-		// "Sight" raycast
-		RaycastHit hit;
-		if(Physics.Raycast(transform.position, Vector3.forward, out hit, sightDistance)) {
-			if(hit.transform.gameObject == GameObject.FindWithTag ("Player")) {
-				currentState = State.Chase;
-				target = hit.transform.gameObject.transform;
+		if(currentState == State.Hunt) {
+			speed = 3.0f;
+			target = null;
+
+			posTimer += 1.0f * Time.deltaTime;
+
+			if(posTimer >= 10.0f) {
+				getPos = true;
 			}
-			else {
-				currentState = State.Roam;
+
+			if(getPos) {
+				lastKnownPos = player.transform.position;
+				getPos = false;
+				posTimer = 0.0f;
+			}
+
+			Vector3 direction = lastKnownPos - transform.position;
+			transform.LookAt(lastKnownPos);
+
+			if(direction.magnitude > chaseDistance) {
+				Vector3 moveVector = direction.normalized * speed * Time.deltaTime;
+				transform.position += moveVector;
+			}
+			if(direction.magnitude < chaseDistance) {
+				currentState = State.Chase;
 			}
 		}
 
-		// "Hearing" raycasts - should be a Physics.SphereCast
-		if(Physics.SphereCast(transform.position, audioDistance, transform.forward, out hit, 10)) {
-			if(hit.transform.gameObject == GameObject.FindWithTag ("Player")) {
-				currentState = State.Chase;
-				target = hit.transform.gameObject.transform;
+		if(currentState == State.Chase) {
+			speed = 8.0f;
+
+			target = player.gameObject.transform;
+			Vector3 direction = target.transform.position - transform.position;
+			transform.LookAt(target);
+
+			if(direction.magnitude > attackDistance) {
+				Vector3 moveVector = direction.normalized * speed * Time.deltaTime;
+				transform.position += moveVector;
+			}
+
+			if(direction.magnitude < attackDistance) {
+				speed = 2.0f;
+				player.GetComponent<Health>().loseHealth = true;
 			}
 		}
-
-		// Chase player when player enters key areas
-
 	}
 }
