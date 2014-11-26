@@ -21,8 +21,10 @@ public class SmallMonsterAI : MonoBehaviour
 	public float speed;
 	public float pop;
 	public float maxPop;
+	public float minPop;
 	public float power;
 	public float radius;
+	public float yValue;
 
 	public float deadTimer;
 	public float waypointTimer;
@@ -52,6 +54,15 @@ public class SmallMonsterAI : MonoBehaviour
 		Attack
 	};
 
+	void Awake()
+	{
+		spawner = GameObject.FindWithTag ("Spawner").GetComponent<SmallMonsterSpawner> ();
+		player = GameObject.FindWithTag ("Player").GetComponent<Health> ();
+		sphereCollider = GetComponent<SphereCollider> ();
+		groundChecker = this.gameObject.transform.FindChild ("GroundChecker").gameObject;
+		particles = this.gameObject.GetComponent<ParticleSystem>();
+	}
+
 	void Start()
 	{
 		// Set up variables and references
@@ -61,11 +72,10 @@ public class SmallMonsterAI : MonoBehaviour
 		health = 100.0f;
 		speed = 3.0f;
 		pop = 25.0f;
-		maxPop = 0.3f;
 		power = 3.0f;
 		radius = 5.0f;
 		chaseDistance = 50.0f;
-		attackDistance = 5.0f;
+		attackDistance = 12.0f;
 		destroyDistance = 60.0f;
 		popDownDistance = 20.0f;
 
@@ -75,16 +85,16 @@ public class SmallMonsterAI : MonoBehaviour
 		gameObject.rigidbody.isKinematic = true;
 		gameObject.collider.enabled = false;
 
-		sphereCollider = GetComponent<SphereCollider> ();
 		sphereCollider.radius = chaseDistance;
-		spawner = GameObject.FindWithTag ("Spawner").GetComponent<SmallMonsterSpawner> ();
-		player = GameObject.FindWithTag ("Player").GetComponent<Health> ();
-		groundChecker = this.gameObject.transform.FindChild ("GroundChecker").gameObject;
-		particles = this.gameObject.GetComponent<ParticleSystem>();
+		yValue = player.transform.position.y - 3.0f;
+		transform.position = new Vector3 (transform.position.x, yValue, transform.position.z);
 	}
 
 	void Update()
 	{
+		maxPop = player.transform.position.y + 0.2f;
+		minPop = player.transform.position.y;
+
 		// Popping out of the ground 
 		if(isJump && canJump && !isDead && !spawner.inBuilding) {
 			// Set rigidbody.isKinematic to false, so that gravity can be used. Previously turned false to keep below surface.
@@ -108,10 +118,11 @@ public class SmallMonsterAI : MonoBehaviour
 
 		// If the monster is not dead, and the player is inside of a house
 		if(currentState == State.Roam && !isDead) {
+			speed = 3.0f;
 			target = GameObject.FindGameObjectWithTag("Player").transform;
 
 			Vector3 direction = target.transform.position - transform.position;
-			direction.y = -1.0f;
+			transform.LookAt(target);
 
 			waypointTimer += 1.0f * Time.deltaTime;
 
@@ -134,7 +145,7 @@ public class SmallMonsterAI : MonoBehaviour
 			gameObject.collider.enabled = false;
 			isAwake = false;
 
-			if(gameObject.transform.position.y < -1.0f) {
+			if(gameObject.transform.position.y < minPop) {
 				gameObject.rigidbody.isKinematic = true;
 
 				if(!isDead) {
@@ -145,11 +156,11 @@ public class SmallMonsterAI : MonoBehaviour
 	
 		// Chase State (if the player are within range)
 		if(currentState == State.Chase && !isDead) {
+			speed = 6.0f;
 			target = GameObject.FindGameObjectWithTag ("Player").transform;
 
 			// Get the direction to travel in by subtracting the target's position with the monster's position. Set y to a negative value
 			Vector3 direction = target.transform.position - transform.position;
-			direction.y = -1.0f;
 
 			// Look in the direction of the player
 			transform.LookAt(target);
@@ -172,7 +183,7 @@ public class SmallMonsterAI : MonoBehaviour
 				gameObject.collider.enabled = false;
 				isAwake = false;
 				
-				if(gameObject.transform.position.y < -1.0f) {
+				if(gameObject.transform.position.y < minPop) {
 					gameObject.rigidbody.isKinematic = true;
 					
 					if(!isDead) {
@@ -215,7 +226,7 @@ public class SmallMonsterAI : MonoBehaviour
 
 	Vector3 GetNewWaypoint()
 	{
-		Debug.Log ("New Waypoint..." + waypoint);
+//		Debug.Log ("New Waypoint..." + waypoint);
 		waypoint = new Vector3 (Random.Range (player.transform.position.x / 2, player.transform.position.x / 2), 
 		                        0.0f, 
 		                        Random.Range (player.transform.position.z / 2, player.transform.position.z / 2));
