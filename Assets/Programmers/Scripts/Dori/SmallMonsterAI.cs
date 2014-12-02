@@ -36,11 +36,13 @@ public class SmallMonsterAI : MonoBehaviour
 	private float chaseDistance;
 	private float attackDistance;
 	private float destroyDistance;
+	private float popDownDistance;
 
 	// Private references
 	private SphereCollider sphereCollider;
 	private SmallMonsterSpawner spawner;
 	private Health player;
+	private ParticleSystem particles;
 
 	// Set to public, but still not showing up in the inspector - what's up with that
 	public enum State {
@@ -62,9 +64,10 @@ public class SmallMonsterAI : MonoBehaviour
 		maxPop = 0.3f;
 		power = 3.0f;
 		radius = 5.0f;
-		chaseDistance = 10.0f;
+		chaseDistance = 50.0f;
 		attackDistance = 5.0f;
-		destroyDistance = 80.0f;
+		destroyDistance = 60.0f;
+		popDownDistance = 20.0f;
 
 		deadTimer = 0.0f;
 		waypointTimer = 0.0f;
@@ -77,12 +80,13 @@ public class SmallMonsterAI : MonoBehaviour
 		spawner = GameObject.FindWithTag ("Spawner").GetComponent<SmallMonsterSpawner> ();
 		player = GameObject.FindWithTag ("Player").GetComponent<Health> ();
 		groundChecker = this.gameObject.transform.FindChild ("GroundChecker").gameObject;
+		particles = this.gameObject.GetComponent<ParticleSystem>();
 	}
 
 	void Update()
 	{
 		// Popping out of the ground 
-		if(isJump && canJump && !isDead) {
+		if(isJump && canJump && !isDead && !spawner.inBuilding) {
 			// Set rigidbody.isKinematic to false, so that gravity can be used. Previously turned false to keep below surface.
 			gameObject.rigidbody.isKinematic = false;
 			gameObject.rigidbody.AddForce(Vector3.up * pop);
@@ -90,17 +94,7 @@ public class SmallMonsterAI : MonoBehaviour
 			if(!isAwake){
 				playParticles = true;
 				if(playParticles) {
-					// Creating ice blocks that the monster shoots out of the ground
-					GameObject clone = Instantiate(cubes, transform.position, Quaternion.identity) as GameObject;
-					playParticles = false;
-					clone.tag = "IceBlock";
-				}
-
-				GameObject[] clones = GameObject.FindGameObjectsWithTag("IceBlock");
-				foreach(var cube in clones) {
-					//	cube.transform.localScale = new Vector3(Random.Range (0.2f, 0.5f), Random.Range (0.2f, 0.5f), Random.Range (0.2f, 0.5f));
-					//	cube.rigidbody.AddExplosionForce (power, Vector3.up, radius, 3.0f, ForceMode.Impulse);
-					Destroy(cube, 2.0f);
+					particles.Play();
 				}
 			}
 
@@ -171,6 +165,21 @@ public class SmallMonsterAI : MonoBehaviour
 				isJump = true;
 				currentState = State.Attack;
 				direction.x = 0.0f;
+			}
+
+			// Pop back under the ground and continue to chase the player
+			if(direction.magnitude >= popDownDistance) {
+				gameObject.collider.enabled = false;
+				isAwake = false;
+				
+				if(gameObject.transform.position.y < -1.0f) {
+					gameObject.rigidbody.isKinematic = true;
+					
+					if(!isDead) {
+						Vector3 moveDirection = direction.normalized * speed * Time.deltaTime;
+						transform.position += moveDirection;
+					}
+				}
 			}
 		}
 
