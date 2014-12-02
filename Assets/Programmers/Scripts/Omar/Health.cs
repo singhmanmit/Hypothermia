@@ -50,12 +50,12 @@ public class Health : MonoBehaviour {
 
 
 
-		if(health > 0 && enterCollider == true)
+		if(health >= 0 && enterCollider == false)
 		{
 			health -= Time.deltaTime * 2;
 		}
 
-		if(health >= 0 && enterCollider == false)
+		if(health > 0 && enterCollider == true)
 		{
 			health += Time.deltaTime * 2;
 		}
@@ -83,7 +83,7 @@ public class Health : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
 	{
-		if(other.gameObject.tag == "Player")
+		if(other.gameObject.tag == "fire")
 		{
 			enterCollider = true;
 			Debug.Log("The player is in the collider");
@@ -92,7 +92,7 @@ public class Health : MonoBehaviour {
 
 	void OnTriggerExit(Collider other)
 	{
-		if (other.gameObject.tag == "Player")
+		if (other.gameObject.tag == "fire")
 		{
 			enterCollider = false;
 			Debug.Log("The player has left the collider");
