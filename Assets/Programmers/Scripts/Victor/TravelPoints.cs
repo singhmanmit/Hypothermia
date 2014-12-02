@@ -78,7 +78,7 @@ public class TravelPoints : MonoBehaviour {
 				{
 
 					Debug.Log("you have clicked on a new coordiante " + Input.mousePosition);
-					GUI.DrawTexture(new Rect(transform.position),wayPoint);
+
 				}
 			}
 		
