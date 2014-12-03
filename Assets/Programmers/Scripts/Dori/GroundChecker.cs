@@ -12,6 +12,7 @@ public class GroundChecker : MonoBehaviour
 	{
 		if(other.gameObject == GameObject.FindWithTag ("Hut")) {
 			this.gameObject.transform.parent.GetComponent<SmallMonsterAI>().canJump = false;
+			this.gameObject.transform.parent.GetComponent<Animation>().animation.Stop();
 		}
 	}
 

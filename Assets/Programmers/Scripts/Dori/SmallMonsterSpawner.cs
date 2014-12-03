@@ -31,7 +31,7 @@ public class SmallMonsterSpawner : MonoBehaviour
 	void Start()
 	{
 		// Set up variables
-		maxSmallMonsters = 5;
+		maxSmallMonsters = 2;
 		spawnTimer = 3.0f;
 		inBuilding = false;
 
@@ -69,7 +69,7 @@ public class SmallMonsterSpawner : MonoBehaviour
 	Vector3 GetNewPosition()
 	{
 		newPosition = new Vector3 (player.transform.localPosition.x + Random.Range (-50.0f, 50.0f), 
-		                           player.transform.position.y - 30.0f, 
+		                           player.transform.position.y - 50.0f, 
 		                           player.transform.localPosition.z + Random.Range (-50.0f, 50.0f));
 		return newPosition;
 	}

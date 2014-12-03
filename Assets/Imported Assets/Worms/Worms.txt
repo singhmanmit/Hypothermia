@@ -1,0 +1,28 @@
+--------WormLarge--------------
+Emerge and Attack 
+1-180
+
+Attack Hit (loop)
+180 – 240
+
+un-Damaged Retreat (from attack pose)
+240- 330
+
+Damaged Retreat (from attack pose)
+331- 450
+
+------------WormSmall------------------
+Worm Emerge
+1-60
+
+Idle (loop)
+61-120
+
+Slither (loop)
+120-170
+
+Ice Breath Attack
+170-240
+
+Damaged Retreat {death}
+240- 300

@@ -9,20 +9,18 @@ public class LargeMonsterAI : MonoBehaviour
 	public float attackDistance;
 	public float speed;
 	public float posTimer;
-	public float pop;
-	public float maxPop;
-	public float minPop;
 	public Vector3 lastKnownPos;
 	public Transform target;
 	public bool getPos;
-	public bool isJump;
-	public bool isAwake;
-	public bool canJump;
+	public bool isAttack;
 	public bool playParticles;
 
 	private GameObject player;
 	private SphereCollider sphereCollider;
 	private ParticleSystem particles;
+	private float yValue;
+	private MeshRenderer[] mesh;
+	private SkinnedMeshRenderer[] skinned;
 
 	public RaycastHit ground;
 
@@ -34,55 +32,61 @@ public class LargeMonsterAI : MonoBehaviour
 	void Awake()
 	{
 		sphereCollider = this.gameObject.GetComponent<SphereCollider>();
+		particles = this.gameObject.GetComponent<ParticleSystem> ();
+		mesh = GetComponentsInChildren<MeshRenderer> ();
+		skinned = GetComponentsInChildren<SkinnedMeshRenderer> ();
 	}
 
 	void Start()
 	{
 		huntDistance = 50.0f;
-		chaseDistance = 30.0f;
-		attackDistance = 5.0f;
+		chaseDistance = 45.0f;
+		attackDistance = 15.0f;
 		speed = 3.0f;
 		posTimer = 0.0f;
 		getPos = false;
-		isJump = false;
-		isAwake = false;
-		canJump = false;
+		isAttack = false;
 
 		currentState = State.Hunt;
 
 		gameObject.rigidbody.isKinematic = true;
 		gameObject.collider.enabled = false;
+		sphereCollider.enabled = true;
+
+		foreach (var m in mesh) {
+			m.enabled = false;
+		}
+
+		foreach (var s in skinned) {
+			s.enabled = false;
+		}
 
 		player = GameObject.FindGameObjectWithTag("Player");
 		sphereCollider.radius = chaseDistance;
+
+		yValue = player.transform.position.y - 130.0f;
+		transform.position = new Vector3 (transform.position.x, yValue, transform.position.z);
 	}
 
 	void Update()
 	{
-		// Popping out of the ground 
-		if(isJump && canJump) {
-			if(Physics.Raycast(transform.position, Vector3.up, out ground, 2.0f)) {
-				if(ground.transform.tag == "Ground") {
-					minPop = ground.transform.position.y - 2.0f;
-					maxPop = ground.transform.position.y + 0.3f;
-				}
+		if(isAttack){
+			foreach(var m in mesh) {
+				m.enabled = true;
 			}
-			// Set rigidbody.isKinematic to false, so that gravity can be used. Previously turned false to keep below surface.
-			gameObject.rigidbody.isKinematic = false;
-			gameObject.rigidbody.AddForce(Vector3.up * pop);
-			
-			if(!isAwake){
-				playParticles = true;
-				if(playParticles) {
-					particles.Play();
-				}
+			foreach(var s in skinned) {
+				s.enabled = true;
 			}
-			
-			if(gameObject.transform.position.y > maxPop) {
-				gameObject.collider.enabled = true;
-				gameObject.rigidbody.AddForce(-Vector3.up * pop);
-				isJump = false;
-				isAwake = true;
+
+			transform.LookAt(player.transform);
+			transform.position = new Vector3 (transform.position.x, 
+			                                  player.transform.position.y,
+			                                  transform.position.z);
+
+			playParticles = true;
+			if(playParticles) {
+				animation.Play ();
+				particles.Play ();
 			}
 		}
 
@@ -98,12 +102,13 @@ public class LargeMonsterAI : MonoBehaviour
 
 			if(getPos) {
 				lastKnownPos = player.transform.position;
+
 				getPos = false;
 				posTimer = 0.0f;
 			}
 
 			Vector3 direction = lastKnownPos - transform.position;
-			transform.LookAt(lastKnownPos);
+			direction.y = 0.0f;
 
 			if(direction.magnitude > chaseDistance) {
 				Vector3 moveVector = direction.normalized * speed * Time.deltaTime;
@@ -115,11 +120,10 @@ public class LargeMonsterAI : MonoBehaviour
 		}
 
 		if(currentState == State.Chase) {
-			speed = 8.0f;
+			speed = 10.0f;
 
 			target = player.gameObject.transform;
 			Vector3 direction = target.transform.position - transform.position;
-			transform.LookAt(target);
 
 			if(direction.magnitude > attackDistance) {
 				Vector3 moveVector = direction.normalized * speed * Time.deltaTime;
@@ -127,6 +131,7 @@ public class LargeMonsterAI : MonoBehaviour
 			}
 
 			if(direction.magnitude < attackDistance) {
+				isAttack = true;
 				speed = 2.0f;
 				player.GetComponent<Health>().loseHealth = true;
 			}

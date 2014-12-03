@@ -4,17 +4,14 @@ using System.Collections.Generic;
 
 public class LargeMonsterSpawner : MonoBehaviour 
 {
+	public List<GameObject> largeMonsters = new List<GameObject>();
 	public GameObject largeMonster;
 	public Vector3 spawn;
 
 	private GameObject[] spawnLoc;
-	private int maxCount;
-
-	public List<GameObject> largeMonsters = new List<GameObject>();
 
 	void Start()
 	{
-		maxCount = 1;
 		spawnLoc = GameObject.FindGameObjectsWithTag("LargeMonsterSpawn");
 
 		StartCoroutine("Spawn");
@@ -24,7 +21,7 @@ public class LargeMonsterSpawner : MonoBehaviour
 	{
 		int index = Random.Range(0, 3);
 		spawn = spawnLoc[index].transform.position;
-		spawn.y = -30.0f;
+		spawn.y = -50.0f;
 
 		yield return new WaitForSeconds(5);
 
