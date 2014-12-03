@@ -11,7 +11,10 @@ public class TravelPoints : MonoBehaviour {
 	public Camera mainCam;
 	public Camera mapCam;
 
-	public Texture2D wayPoint;
+	//public Texture2D wayPoint;
+
+	public GameObject wayPoint;
+
 
 	bool isMapCameraON;
 
@@ -25,6 +28,8 @@ public class TravelPoints : MonoBehaviour {
 		// the variables will find the camera components for the main and Map camera
 		mapCam = GameObject.FindGameObjectWithTag ("MainCamera").camera;
 		mainCam = GameObject.FindGameObjectWithTag ("PlayerCamera").camera;
+
+		//wayPoint = GameObject.FindGameObjectWithTag ("wayPoint");
 
 		mainCam.enabled = true;
 		mapCam.enabled = false;
@@ -69,17 +74,23 @@ public class TravelPoints : MonoBehaviour {
 //
 //			}
 
+			var fwd = transform.TransformDirection(Vector3.forward);
+			RaycastHit hit;
+			Debug.DrawRay(transform.position, fwd * 50, Color.green);
 
-			if (Input.GetButtonDown("Fire1"))
+
+			if (Input.GetButtonDown("Fire1") && Physics.Raycast(transform.position, fwd, out hit, 50))
 			{
 				Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
 				if(Physics.Raycast(ray))
 				{
-
-					Debug.Log("you have clicked on a new coordiante " + Input.mousePosition);
+					Instantiate(wayPoint, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
+	//				Debug.Log("you have clicked on a new coordiante " + Input.mousePosition);
 
 				}
+
+				//Instantiate(wayPoint, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
 			}
 		
 		}
