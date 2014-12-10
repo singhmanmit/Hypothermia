@@ -22,6 +22,7 @@ public class SmallMonsterAI : MonoBehaviour
 	public float power;
 	public float radius;
 	public float yValue;
+	public float yOffset;
 
 	public float deadTimer;
 	public float waypointTimer;
@@ -80,11 +81,13 @@ public class SmallMonsterAI : MonoBehaviour
 		attackDistance = 20.0f;
 		destroyDistance = 45.0f;
 		popDownDistance = 25.0f;
+		yOffset = 20.0f;
 
 		deadTimer = 0.0f;
 		waypointTimer = 0.0f;
 
 		gameObject.rigidbody.isKinematic = true;
+		gameObject.collider.enabled = false;
 		sphereCollider.enabled = true;
 
 		foreach (var m in mesh) {
@@ -95,17 +98,19 @@ public class SmallMonsterAI : MonoBehaviour
 			s.enabled = false;
 		}
 
+		Physics.IgnoreLayerCollision (0, 8, true);
+
 		sphereCollider.radius = chaseDistance;
-		yValue = player.transform.position.y - 30.0f;
+		yValue = player.transform.position.y - yOffset;
 		transform.position = new Vector3 (transform.position.x, yValue, transform.position.z);
-
-
 	}
 
 	void Update()
 	{
 		// Popping out of the ground 
 		if(isJump && canJump && !isDead && !spawner.inBuilding) {
+			sphereCollider.enabled = false;
+
 			foreach(var m in mesh) {
 				m.enabled = true;
 			}
@@ -113,13 +118,14 @@ public class SmallMonsterAI : MonoBehaviour
 				s.enabled = true;
 			}
 
+			animation.CrossFadeQueued("Appear");
+
 			this.gameObject.renderer.enabled = true;
 			transform.position = new Vector3 (transform.position.x, 
 			                                  player.transform.position.y,
 			                                  transform.position.z);
 			if(!isAwake){
 				playParticles = true;
-				animation.Play ();
 				if(playParticles) {
 					particles.Play();
 				}
@@ -132,9 +138,7 @@ public class SmallMonsterAI : MonoBehaviour
 			}
 		}
 
-		// If the monster is not dead, and the player is inside of a house
 		if(currentState == State.Roam && !isDead) {
-
 			speed = 3.0f;
 			target = GameObject.FindGameObjectWithTag("Player").transform;
 
@@ -159,21 +163,37 @@ public class SmallMonsterAI : MonoBehaviour
 
 		// Fall back into the ground if the player is out of range or the monster is dead
 		if(currentState == State.Idle || isDead) {
-			isAwake = false;
-			animation.Stop ();
+			foreach (var m in mesh) {
+				m.enabled = false;
+			}
+			
+			foreach (var s in skinned) {
+				s.enabled = false;
+			}
 
-			if(gameObject.transform.position.y < player.transform.position.y) {
+			sphereCollider.enabled = true;
+			isAwake = false;
+
+			transform.position = new Vector3 (transform.position.x, player.transform.position.y - yOffset, transform.position.z);
+
+			if(gameObject.transform.position.y < player.transform.position.y - yOffset) {
 				gameObject.rigidbody.isKinematic = true;
 
 				if(!isDead) {
-					currentState = State.Roam;
+					currentState = State.Chase;
 				}
 			}
 		}
 	
 		// Chase State (if the player are within range)
 		if(currentState == State.Chase && !isDead) {
-			animation.Stop ();
+			foreach (var m in mesh) {
+				m.enabled = false;
+			}
+			
+			foreach (var s in skinned) {
+				s.enabled = false;
+			}
 			speed = 4.5f;
 			target = GameObject.FindGameObjectWithTag ("Player").transform;
 
@@ -199,7 +219,7 @@ public class SmallMonsterAI : MonoBehaviour
 				gameObject.collider.enabled = false;
 				isAwake = false;
 				
-				if(gameObject.transform.position.y < (player.transform.position.y - 30.0f)) {
+				if(gameObject.transform.position.y < (player.transform.position.y - yOffset)) {
 					gameObject.rigidbody.isKinematic = true;
 					
 					if(!isDead) {
@@ -211,12 +231,20 @@ public class SmallMonsterAI : MonoBehaviour
 		}
 
 		if(currentState == State.Attack) {
+			animation.CrossFade("Attack");
 			// Shoot a raycast forward, and if it's a hit - blow ice onto the player
 			RaycastHit hit;
 			if(Physics.Raycast(transform.position, Vector3.forward, out hit, attackDistance)) {
 				if(hit.transform.gameObject == GameObject.FindWithTag("Player")) {
-					player.SendMessage("OnDamage", 10.0f);
+					player.GetComponent<Health>().loseHealth = true;
 				}
+			}
+
+			Vector3 distance = target.transform.position - transform.position;
+
+			if(distance.magnitude > attackDistance + 5.0f) {
+//				smallWormAnimator.SetTrigger("Burrow");
+				currentState = State.Idle;
 			}
 		}
 
@@ -244,12 +272,6 @@ public class SmallMonsterAI : MonoBehaviour
 		                        0.0f, 
 		                        Random.Range (player.transform.position.z / 2, player.transform.position.z / 2));
 		return waypoint;
-	}
-
-	void FixedUpdate()
-	{
-		// Ignore collisions with the ice blocks on layer 8
-		Physics.IgnoreLayerCollision (0, 8, true);
 	}
 
 	void OnTriggerStay (Collider other) 

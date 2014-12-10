@@ -13,14 +13,17 @@ public class LargeMonsterAI : MonoBehaviour
 	public Transform target;
 	public bool getPos;
 	public bool isAttack;
+	public bool isMiss;
 	public bool playParticles;
 
 	private GameObject player;
 	private SphereCollider sphereCollider;
-	private ParticleSystem particles;
 	private float yValue;
 	private MeshRenderer[] mesh;
 	private SkinnedMeshRenderer[] skinned;
+
+	private float xPos;
+	private float zPos;
 
 	public RaycastHit ground;
 
@@ -32,7 +35,6 @@ public class LargeMonsterAI : MonoBehaviour
 	void Awake()
 	{
 		sphereCollider = this.gameObject.GetComponent<SphereCollider>();
-		particles = this.gameObject.GetComponent<ParticleSystem> ();
 		mesh = GetComponentsInChildren<MeshRenderer> ();
 		skinned = GetComponentsInChildren<SkinnedMeshRenderer> ();
 	}
@@ -46,6 +48,7 @@ public class LargeMonsterAI : MonoBehaviour
 		posTimer = 0.0f;
 		getPos = false;
 		isAttack = false;
+		isMiss = false;
 
 		currentState = State.Hunt;
 
@@ -64,12 +67,30 @@ public class LargeMonsterAI : MonoBehaviour
 		player = GameObject.FindGameObjectWithTag("Player");
 		sphereCollider.radius = chaseDistance;
 
-		yValue = player.transform.position.y - 130.0f;
+		yValue = player.transform.position.y - 30.0f;
 		transform.position = new Vector3 (transform.position.x, yValue, transform.position.z);
 	}
 
 	void Update()
 	{
+		if(isMiss) {
+			animation.Stop ("Attack");
+			animation.Play ("Miss And Burrow");
+			currentState = State.Hunt;
+
+			if(!animation.isPlaying) {
+				animation.Stop ("Miss and Burrow");
+			}
+
+			foreach (var m in mesh) {
+				m.enabled = false;
+			}
+			
+			foreach (var s in skinned) {
+				s.enabled = false;
+			}
+		}
+
 		if(isAttack){
 			foreach(var m in mesh) {
 				m.enabled = true;
@@ -79,20 +100,15 @@ public class LargeMonsterAI : MonoBehaviour
 			}
 
 			transform.LookAt(player.transform);
-			transform.position = new Vector3 (transform.position.x, 
+			transform.position = new Vector3 (xPos, 
 			                                  player.transform.position.y,
-			                                  transform.position.z);
+			                                  zPos);
 
-			playParticles = true;
-			if(playParticles) {
-				animation.Play ();
-				particles.Play ();
-			}
+			animation.Play ("Attack");
 		}
 
 		if(currentState == State.Hunt) {
 			speed = 3.0f;
-			target = null;
 
 			posTimer += 1.0f * Time.deltaTime;
 
@@ -131,8 +147,10 @@ public class LargeMonsterAI : MonoBehaviour
 			}
 
 			if(direction.magnitude < attackDistance) {
+				xPos = player.transform.position.x + 50.0f;
+				zPos = player.transform.position.z + 50.0f;
 				isAttack = true;
-				speed = 2.0f;
+				speed = 0.0f;
 				player.GetComponent<Health>().loseHealth = true;
 			}
 		}

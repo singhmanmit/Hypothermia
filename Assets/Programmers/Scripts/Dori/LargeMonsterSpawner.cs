@@ -21,7 +21,7 @@ public class LargeMonsterSpawner : MonoBehaviour
 	{
 		int index = Random.Range(0, 3);
 		spawn = spawnLoc[index].transform.position;
-		spawn.y = -50.0f;
+		spawn.y = -30.0f;
 
 		yield return new WaitForSeconds(5);
 
