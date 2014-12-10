@@ -19,10 +19,9 @@ public class SmallMonsterAI : MonoBehaviour
 	public bool playParticles;
 	public float health;
 	public float speed;
-	public float pop;
-	public float maxPop;
 	public float power;
 	public float radius;
+	public float yValue;
 
 	public float deadTimer;
 	public float waypointTimer;
@@ -31,6 +30,8 @@ public class SmallMonsterAI : MonoBehaviour
 	public GameObject cubes;
 	public Transform target;
 	public Vector3 waypoint;
+
+	public RaycastHit ground;
 
 	private State currentState;
 	private float chaseDistance;
@@ -43,6 +44,8 @@ public class SmallMonsterAI : MonoBehaviour
 	private SmallMonsterSpawner spawner;
 	private Health player;
 	private ParticleSystem particles;
+	private MeshRenderer[] mesh;
+	private SkinnedMeshRenderer[] skinned;
 
 	// Set to public, but still not showing up in the inspector - what's up with that
 	public enum State {
@@ -52,6 +55,17 @@ public class SmallMonsterAI : MonoBehaviour
 		Attack
 	};
 
+	void Awake()
+	{
+		mesh = GetComponentsInChildren<MeshRenderer> ();
+		skinned = GetComponentsInChildren<SkinnedMeshRenderer> ();
+		sphereCollider = GetComponent<SphereCollider> ();
+		particles = this.gameObject.GetComponent<ParticleSystem>();
+		spawner = GameObject.FindWithTag ("Spawner").GetComponent<SmallMonsterSpawner> ();
+		player = GameObject.FindWithTag ("Player").GetComponent<Health> ();
+		groundChecker = this.gameObject.transform.FindChild ("GroundChecker").gameObject;
+	}
+
 	void Start()
 	{
 		// Set up variables and references
@@ -60,47 +74,59 @@ public class SmallMonsterAI : MonoBehaviour
 		playParticles = false;
 		health = 100.0f;
 		speed = 3.0f;
-		pop = 25.0f;
-		maxPop = 0.3f;
 		power = 3.0f;
 		radius = 5.0f;
-		chaseDistance = 50.0f;
-		attackDistance = 5.0f;
-		destroyDistance = 60.0f;
-		popDownDistance = 20.0f;
+		chaseDistance = 40.0f;
+		attackDistance = 20.0f;
+		destroyDistance = 45.0f;
+		popDownDistance = 25.0f;
 
 		deadTimer = 0.0f;
 		waypointTimer = 0.0f;
 
 		gameObject.rigidbody.isKinematic = true;
-		gameObject.collider.enabled = false;
+		sphereCollider.enabled = true;
 
-		sphereCollider = GetComponent<SphereCollider> ();
+		foreach (var m in mesh) {
+			m.enabled = false;
+		}
+		
+		foreach (var s in skinned) {
+			s.enabled = false;
+		}
+
 		sphereCollider.radius = chaseDistance;
-		spawner = GameObject.FindWithTag ("Spawner").GetComponent<SmallMonsterSpawner> ();
-		player = GameObject.FindWithTag ("Player").GetComponent<Health> ();
-		groundChecker = this.gameObject.transform.FindChild ("GroundChecker").gameObject;
-		particles = this.gameObject.GetComponent<ParticleSystem>();
+		yValue = player.transform.position.y - 30.0f;
+		transform.position = new Vector3 (transform.position.x, yValue, transform.position.z);
+
+
 	}
 
 	void Update()
 	{
 		// Popping out of the ground 
 		if(isJump && canJump && !isDead && !spawner.inBuilding) {
-			// Set rigidbody.isKinematic to false, so that gravity can be used. Previously turned false to keep below surface.
-			gameObject.rigidbody.isKinematic = false;
-			gameObject.rigidbody.AddForce(Vector3.up * pop);
+			foreach(var m in mesh) {
+				m.enabled = true;
+			}
+			foreach(var s in skinned) {
+				s.enabled = true;
+			}
 
+			this.gameObject.renderer.enabled = true;
+			transform.position = new Vector3 (transform.position.x, 
+			                                  player.transform.position.y,
+			                                  transform.position.z);
 			if(!isAwake){
 				playParticles = true;
+				animation.Play ();
 				if(playParticles) {
 					particles.Play();
 				}
+				transform.LookAt(target);
 			}
 
-			if(gameObject.transform.position.y > maxPop) {
-				gameObject.collider.enabled = true;
-				gameObject.rigidbody.AddForce(-Vector3.up * pop);
+			if(gameObject.transform.position.y > player.transform.position.y) {
 				isJump = false;
 				isAwake = true;
 			}
@@ -108,10 +134,12 @@ public class SmallMonsterAI : MonoBehaviour
 
 		// If the monster is not dead, and the player is inside of a house
 		if(currentState == State.Roam && !isDead) {
+
+			speed = 3.0f;
 			target = GameObject.FindGameObjectWithTag("Player").transform;
 
 			Vector3 direction = target.transform.position - transform.position;
-			direction.y = -1.0f;
+			direction.y = 0.0f;
 
 			waypointTimer += 1.0f * Time.deltaTime;
 
@@ -131,10 +159,10 @@ public class SmallMonsterAI : MonoBehaviour
 
 		// Fall back into the ground if the player is out of range or the monster is dead
 		if(currentState == State.Idle || isDead) {
-			gameObject.collider.enabled = false;
 			isAwake = false;
+			animation.Stop ();
 
-			if(gameObject.transform.position.y < -1.0f) {
+			if(gameObject.transform.position.y < player.transform.position.y) {
 				gameObject.rigidbody.isKinematic = true;
 
 				if(!isDead) {
@@ -145,14 +173,13 @@ public class SmallMonsterAI : MonoBehaviour
 	
 		// Chase State (if the player are within range)
 		if(currentState == State.Chase && !isDead) {
+			animation.Stop ();
+			speed = 4.5f;
 			target = GameObject.FindGameObjectWithTag ("Player").transform;
 
 			// Get the direction to travel in by subtracting the target's position with the monster's position. Set y to a negative value
 			Vector3 direction = target.transform.position - transform.position;
-			direction.y = -1.0f;
-
-			// Look in the direction of the player
-			transform.LookAt(target);
+			direction.y = 0.0f;
 
 			// Keep moving if the player is out of attack range
 			if(direction.magnitude > attackDistance) {
@@ -172,7 +199,7 @@ public class SmallMonsterAI : MonoBehaviour
 				gameObject.collider.enabled = false;
 				isAwake = false;
 				
-				if(gameObject.transform.position.y < -1.0f) {
+				if(gameObject.transform.position.y < (player.transform.position.y - 30.0f)) {
 					gameObject.rigidbody.isKinematic = true;
 					
 					if(!isDead) {
@@ -184,9 +211,6 @@ public class SmallMonsterAI : MonoBehaviour
 		}
 
 		if(currentState == State.Attack) {
-			// Look at the player
-			transform.LookAt(target);
-
 			// Shoot a raycast forward, and if it's a hit - blow ice onto the player
 			RaycastHit hit;
 			if(Physics.Raycast(transform.position, Vector3.forward, out hit, attackDistance)) {
@@ -215,7 +239,7 @@ public class SmallMonsterAI : MonoBehaviour
 
 	Vector3 GetNewWaypoint()
 	{
-		Debug.Log ("New Waypoint..." + waypoint);
+//		Debug.Log ("New Waypoint..." + waypoint);
 		waypoint = new Vector3 (Random.Range (player.transform.position.x / 2, player.transform.position.x / 2), 
 		                        0.0f, 
 		                        Random.Range (player.transform.position.z / 2, player.transform.position.z / 2));

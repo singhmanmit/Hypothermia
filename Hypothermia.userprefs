@@ -1,8 +1,17 @@
 ﻿<Properties>
+<<<<<<< HEAD
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Programmers\Scripts\Dori\LargeMonsterAI.cs">
+    <Files>
+      <File FileName="Assets\Programmers\Scripts\Dori\LargeMonsterAI.cs" Line="88" Column="3" />
+      <File FileName="Assets\Programmers\Scripts\Dori\SmallMonsterAI.cs" Line="89" Column="3" />
+      <File FileName="Assets\Programmers\Scripts\Dori\LargeMonsterSpawner.cs" Line="40" Column="2" />
+=======
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Programmers/Scripts/Victor/TravelPoints.cs">
     <Files>
       <File FileName="Assets/Programmers/Scripts/Victor/TravelPoints.cs" Line="81" Column="6" />
+>>>>>>> master
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
